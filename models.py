@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text
-
+from sqlalchemy.orm import Mapped, mapped_column
 from .database import Base
 
 
@@ -11,4 +11,4 @@ class Recipe(Base):
     cook_time = Column(Integer, nullable=False)
     ingredients = Column(Text, nullable=False)
     description = Column(Text, nullable=False)
-    views = Column(Integer, default=0)
+    views: Mapped[int] = mapped_column(default=0)
