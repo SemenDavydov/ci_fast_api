@@ -45,7 +45,7 @@ async def test_create_recipe(async_client):
         "title": "Борщ",
         "cook_time": 60,
         "ingredients": "Свёкла, капуста, мясо, картофель",
-        "description": "Традиционный русский суп."
+        "description": "Традиционный русский суп.",
     }
     response = await async_client.post("/recipes", json=payload)
     assert response.status_code == 200
