@@ -23,7 +23,8 @@ async def lifespan(app: FastAPI):
 # Создание FastAPI-приложения с указанием lifespan
 app = FastAPI(
     title="Кулинарная книга API",
-    description="API для управления рецептами: создание, просмотр, детальная информация.",
+    description="API для управления рецептами: создание,"
+                " просмотр, детальная информация.",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -40,7 +41,8 @@ async def get_db() -> AsyncSession:
     "/recipes",
     response_model=List[RecipeRead],
     summary="Получить список всех рецептов",
-    description="Список всех рецептов, отсортированных по количеству просмотров и времени приготовления.",
+    description="Список всех рецептов, отсортированных по количеству"
+                " просмотров и времени приготовления.",
 )
 async def get_recipes(db: AsyncSession = Depends(get_db)):
     return await crud.get_all_recipes(db)
@@ -51,7 +53,8 @@ async def get_recipes(db: AsyncSession = Depends(get_db)):
     "/recipes/{recipe_id}",
     response_model=RecipeRead,
     summary="Получить рецепт по ID",
-    description="Детальная информация о рецепте по его ID. Количество просмотров увеличивается.",
+    description="Детальная информация о рецепте по его ID."
+                " Количество просмотров увеличивается.",
 )
 async def get_recipe(recipe_id: int, db: AsyncSession = Depends(get_db)):
     recipe = await crud.get_recipe_by_id(recipe_id, db)
@@ -64,7 +67,8 @@ async def get_recipe(recipe_id: int, db: AsyncSession = Depends(get_db)):
 @app.post(
     "/recipes",
     summary="Создать новый рецепт",
-    description="Создание нового рецепта. Передай название, время, ингредиенты и описание.",
+    description="Создание нового рецепта."
+                " Передай название, время, ингредиенты и описание.",
 )
 async def create_recipe(recipe: RecipeCreate, db: AsyncSession = Depends(get_db)):
     return await crud.create_recipe(recipe, db)
