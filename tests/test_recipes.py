@@ -1,10 +1,10 @@
-import pytest_asyncio
 import pytest
-from httpx import AsyncClient, ASGITransport
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+import pytest_asyncio
+from httpx import ASGITransport, AsyncClient
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from ..main import app, get_db
 from ..database import Base
+from ..main import app, get_db
 
 # Подключение к in-memory БД
 DATABASE_URL = "sqlite+aiosqlite:///:memory:"

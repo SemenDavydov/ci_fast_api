@@ -1,11 +1,12 @@
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
-from typing import List
 from contextlib import asynccontextmanager
+from typing import List
 
-from .database import Base, engine, SessionLocal
-from .schemas import RecipeRead, RecipeCreate
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from . import crud
+from .database import Base, SessionLocal, engine
+from .schemas import RecipeCreate, RecipeRead
 
 
 # инициализация при запуске приложения
